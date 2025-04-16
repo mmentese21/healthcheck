@@ -12,5 +12,13 @@ A machine learning pipeline for detecting diseases based on patient symptom desc
 ## 🚀 Quickstart
 
 1. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
+    ```bash
+    pip install -r requirements.txt
+
+    ```bash
+    python train_classifier.py
+
+    ```bash
+    python detect_disease.py
+
+  

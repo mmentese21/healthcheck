@@ -8,3 +8,4 @@ __pycache__/
 disease_classifier/
 results/
 logs/
+predictions.txt
