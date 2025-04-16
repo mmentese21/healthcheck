@@ -1,0 +1,16 @@
+# 🧠 Disease Detection NLP Pipeline
+
+A machine learning pipeline for detecting diseases based on patient symptom descriptions using Bio_ClinicalBERT and spaCy preprocessing.
+
+## 📁 Project Structure
+
+- `train_classifier.py` — fine-tunes Bio_ClinicalBERT on your dataset
+- `detect_disease.py` — runs predictions on test samples
+- `train.csv` — your labeled dataset (index, label, text)
+- `disease_classifier/` — saved model, tokenizer, and label map
+
+## 🚀 Quickstart
+
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt

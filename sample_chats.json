@@ -1,0 +1,43 @@
+[
+    {
+      "user_id": "patient001",
+      "chat_history": [
+        "I've been experiencing shortness of breath and chest pain.",
+        "I also feel extremely tired and dizzy.",
+        "It started after walking up the stairs."
+      ]
+    },
+    {
+      "user_id": "patient002",
+      "chat_history": [
+        "I have a high fever and chills.",
+        "There’s a constant pressure in my head and my neck feels stiff.",
+        "It’s hard to look at bright lights — could it be something serious?"
+      ]
+    },
+    {
+      "user_id": "patient003",
+      "chat_history": [
+        "My child has been vomiting for two days and now has a rash.",
+        "She seems very weak and isn’t eating anything.",
+        "We gave paracetamol but the fever hasn’t gone down."
+      ]
+    },
+    {
+      "user_id": "patient004",
+      "chat_history": [
+        "I’ve been coughing up blood and it’s getting worse each day.",
+        "I’m losing weight rapidly without trying.",
+        "It’s hard to sleep because of the night sweats."
+      ]
+    },
+    {
+      "user_id": "patient005",
+      "chat_history": [
+        "I’m pregnant and have been feeling unusually dizzy and nauseous.",
+        "Today I fainted in the shower.",
+        "My blood pressure readings are lower than usual."
+      ]
+    }
+  ]
+  

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pkl
+*.log
+*.tmp
+.env
+.venv/
+disease_classifier/
+results/
+logs/
