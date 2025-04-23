@@ -1,66 +1,79 @@
-# 🧠 Disease Detection NLP Pipeline
+# HealthCheckApplication
 
-A machine learning pipeline for detecting diseases based on patient symptom descriptions using **Bio_ClinicalBERT** and optional custom fine-tuned models.
+HealthCheckApplication is a machine learning-based tool designed to detect diseases based on symptoms. It leverages a trained disease classification model to predict potential diseases and provides tools for training, inference, and result analysis.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-.
-├── train_classifier.py        # Fine-tunes Bio_ClinicalBERT or a custom model
-├── detect_disease.py          # Runs predictions on test samples
-├── train.csv                  # Your labeled dataset (index, label, text)
-├── disease_classifier/        # Folder for saved model, tokenizer, and label map
-│   ├── config.json
-│   ├── pytorch_model.bin
-│   ├── tokenizer_config.json
-│   ├── vocab.txt
-│   └── label_map.json
-└── requirements.txt           # Required Python packages
+.gitignore
+detect_disease.py       # Script for detecting diseases based on symptoms
+detect.py               # Script for running predictions
+predictions.txt         # File containing prediction results
+README                  # Project documentation
+requirements.txt        # Python dependencies
+sample_chats.json       # Sample input data for testing
+Symptom2Disease.csv     # Dataset mapping symptoms to diseases
+train_diseases.py       # Script for training the disease classification model
+disease_classifier/     # Directory containing the trained model and tokenizer files
+results/                # Directory containing training checkpoints and results
 ```
 
-## 🚀 Quickstart
+### Key Directories and Files
 
-### 1. Install Dependencies
+- **`disease_classifier/`**: Contains the trained model (`model.safetensors`), tokenizer configuration, and vocabulary files.
+- **`results/`**: Stores training checkpoints and metadata, such as optimizer state and training arguments.
 
-Make sure you have Python 3.7+ and run:
+## Installation
 
-```bash
-pip install -r requirements.txt
-```
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd HealthCheckApplication
+   ```
 
-### 2. Train the Model
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Fine-tune the model using your `train.csv` file:
+## Usage
 
-```bash
-python train_classifier.py
-```
-
-> Make sure `train.csv` contains `index`, `label`, and `text` columns.
-
-### 3. Run Inference
-
-Run predictions on the test set (subset of `Symptom2Disease.csv`):
-
+### Detect Diseases
+Run the `detect_disease.py` script to predict diseases based on symptoms:
 ```bash
 python detect_disease.py
 ```
 
-You will be prompted to choose between using:
-- `1` for Bio_ClinicalBERT
-- `2` for your fine-tuned model in `disease_classifier/`
-
-Predictions are saved to `predictions.txt`.
-
-## 📝 Notes
-
-- The `detect_disease.py` script selects every 7th row from `Symptom2Disease.csv` for evaluation.
-- Prediction results include the sample index, true label, predicted label, and confidence score.
-
-## ✅ Example Output
-
+### Train the Model
+To train the disease classification model, use the `train_diseases.py` script:
+```bash
+python train_diseases.py
 ```
-Choose model (1 for Bio_ClinicalBERT, 2 for custom): 2
-Total samples: 57
-Correct predictions: 43
-```
+
+### Analyze Predictions
+Predictions are saved in `predictions.txt`. You can analyze the results using your preferred tools.
+
+## Data
+
+- **`Symptom2Disease.csv`**: A CSV file mapping symptoms to diseases, used for training and inference.
+- **`sample_chats.json`**: Example input data for testing the model.
+
+## Model
+
+The trained model is stored in the `disease_classifier/` directory. It includes:
+- `model.safetensors`: The trained model weights.
+- `tokenizer.json` and related files: Tokenizer configuration for preprocessing input data.
+
+## Results
+
+Training checkpoints and metadata are saved in the `results/` directory. These include:
+- `checkpoint-387/`: A specific checkpoint containing the model and optimizer state.
+- `training_args.bin`: Training arguments used for reproducibility.
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.

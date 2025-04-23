@@ -41,6 +41,9 @@ def predict_disease(text):
 
 true_count = 0
 total_count = len(test_df)
+f = open("predictions.txt", "a+")
+f.write("index,true_label,predicted_label,confidence\n")
+
 for i, row in test_df.iterrows():
     user_index = row["index"]
     true_label = row["label"]
@@ -50,8 +53,8 @@ for i, row in test_df.iterrows():
     if predicted_label == true_label:
         true_count += 1
     
-    with open("predictions.txt", "a+") as f:
-        f.write(f"{user_index},{true_label},{predicted_label},{confidence}\n")
+    
+    f.write(f"{user_index},{true_label},{predicted_label},{confidence}\n")
 """
     print(f"Index: {user_index}")
     print(f"Text: {text}")
