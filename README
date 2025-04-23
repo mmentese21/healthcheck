@@ -1,24 +1,66 @@
 # 🧠 Disease Detection NLP Pipeline
 
-A machine learning pipeline for detecting diseases based on patient symptom descriptions using Bio_ClinicalBERT and spaCy preprocessing.
+A machine learning pipeline for detecting diseases based on patient symptom descriptions using **Bio_ClinicalBERT** and optional custom fine-tuned models.
 
 ## 📁 Project Structure
 
-- `train_classifier.py` — fine-tunes Bio_ClinicalBERT on your dataset
-- `detect_disease.py` — runs predictions on test samples
-- `train.csv` — your labeled dataset (index, label, text)
-- `disease_classifier/` — saved model, tokenizer, and label map
+```
+.
+├── train_classifier.py        # Fine-tunes Bio_ClinicalBERT or a custom model
+├── detect_disease.py          # Runs predictions on test samples
+├── train.csv                  # Your labeled dataset (index, label, text)
+├── disease_classifier/        # Folder for saved model, tokenizer, and label map
+│   ├── config.json
+│   ├── pytorch_model.bin
+│   ├── tokenizer_config.json
+│   ├── vocab.txt
+│   └── label_map.json
+└── requirements.txt           # Required Python packages
+```
 
 ## 🚀 Quickstart
 
-1. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
+### 1. Install Dependencies
 
-    ```bash
-    python train_classifier.py
+Make sure you have Python 3.7+ and run:
 
-    ```bash
-    python detect_disease.py
+```bash
+pip install -r requirements.txt
+```
 
-  
+### 2. Train the Model
+
+Fine-tune the model using your `train.csv` file:
+
+```bash
+python train_classifier.py
+```
+
+> Make sure `train.csv` contains `index`, `label`, and `text` columns.
+
+### 3. Run Inference
+
+Run predictions on the test set (subset of `Symptom2Disease.csv`):
+
+```bash
+python detect_disease.py
+```
+
+You will be prompted to choose between using:
+- `1` for Bio_ClinicalBERT
+- `2` for your fine-tuned model in `disease_classifier/`
+
+Predictions are saved to `predictions.txt`.
+
+## 📝 Notes
+
+- The `detect_disease.py` script selects every 7th row from `Symptom2Disease.csv` for evaluation.
+- Prediction results include the sample index, true label, predicted label, and confidence score.
+
+## ✅ Example Output
+
+```
+Choose model (1 for Bio_ClinicalBERT, 2 for custom): 2
+Total samples: 57
+Correct predictions: 43
+```

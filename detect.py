@@ -32,7 +32,6 @@ def predict_disease(chat_text):
     }
 
 if __name__ == "__main__":
-    # Load example data
     with open("sample_chats.json", "r") as f:
         chats = json.load(f)
 

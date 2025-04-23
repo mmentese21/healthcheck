@@ -3,12 +3,10 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import json
 
-# === Load label map ===
 with open("disease_classifier/label_map.json", "r") as f:
     label2id = json.load(f)
 id2label = {int(v): k for k, v in label2id.items()}
 
-# === Load tokenizer and model ===
 choose = input("Choose model (1 for Bio_ClinicalBERT, 2 for custom): ")
 if choose == "2":
     model = AutoModelForSequenceClassification.from_pretrained("disease_classifier")
@@ -28,12 +26,11 @@ else:
 
 model.eval()
 
-# === Load and filter test data ===
-df = pd.read_csv("Symptom2Disease.csv")  # Replace with your CSV file
+
+df = pd.read_csv("Symptom2Disease.csv")
 df["index"] = df["index"].astype(int)
 test_df = df[df["index"] % 7 == 0].reset_index(drop=True)
 
-# === Prediction function ===
 def predict_disease(text):
     inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True, max_length=512)
     with torch.no_grad():
@@ -42,7 +39,6 @@ def predict_disease(text):
     pred = torch.argmax(probs, dim=1).item()
     return id2label[pred], round(probs[0][pred].item(), 3)
 
-# === Run predictions on test data ===
 true_count = 0
 total_count = len(test_df)
 for i, row in test_df.iterrows():
