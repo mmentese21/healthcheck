@@ -9,3 +9,4 @@ disease_classifier/
 results/
 logs/
 predictions.txt
+Dockerfile
